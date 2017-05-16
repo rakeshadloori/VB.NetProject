@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "VB.Net", "VB.Net\VB.Net.vbproj", "{3C08AF07-7A76-49F6-89CE-EEA3EE57C1F4}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "EmpRepo", "EmpRepo\EmpRepo.vbproj", "{9199EDF1-E29D-4166-874F-6E9311C6F14A}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "EmpBO", "EmpBO\EmpBO.vbproj", "{B8EE59C2-65FA-4DF5-B2E7-7608D5EC76AE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{3C08AF07-7A76-49F6-89CE-EEA3EE57C1F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C08AF07-7A76-49F6-89CE-EEA3EE57C1F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C08AF07-7A76-49F6-89CE-EEA3EE57C1F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9199EDF1-E29D-4166-874F-6E9311C6F14A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9199EDF1-E29D-4166-874F-6E9311C6F14A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9199EDF1-E29D-4166-874F-6E9311C6F14A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9199EDF1-E29D-4166-874F-6E9311C6F14A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8EE59C2-65FA-4DF5-B2E7-7608D5EC76AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8EE59C2-65FA-4DF5-B2E7-7608D5EC76AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8EE59C2-65FA-4DF5-B2E7-7608D5EC76AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8EE59C2-65FA-4DF5-B2E7-7608D5EC76AE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

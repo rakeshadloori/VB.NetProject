@@ -272,6 +272,10 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.vbhtml" />
     <Content Include="Views\Shared\Lockout.vbhtml" />
     <Content Include="Views\Shared\_LoginPartial.vbhtml" />
+    <Content Include="Views\Employee\Index3.vbhtml" />
+    <Content Include="Views\Employee\Index1.vbhtml" />
+    <Content Include="Views\Employee\Index2.vbhtml" />
+    <Content Include="Views\Employee\Index4.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
@@ -305,7 +309,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Employee\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

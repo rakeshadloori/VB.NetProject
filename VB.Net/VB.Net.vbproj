@@ -311,6 +311,16 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EmpBO\EmpBO.vbproj">
+      <Project>{B8EE59C2-65FA-4DF5-B2E7-7608D5EC76AE}</Project>
+      <Name>EmpBO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EmpRepo\EmpRepo.vbproj">
+      <Project>{9199EDF1-E29D-4166-874F-6E9311C6F14A}</Project>
+      <Name>EmpRepo</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

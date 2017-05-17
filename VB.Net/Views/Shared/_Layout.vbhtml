@@ -17,16 +17,123 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", New With { .area = "" }, New With { .class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("DA", "Index1", "Employee")</li>
-                    <li>@Html.ActionLink("DA - M", "Index2", "Employee")</li>
-                    <li>@Html.ActionLink("DR", "Index3", "Employee")</li>
-                    <li>@Html.ActionLink("DR - M", "Index4", "Employee")</li>
+                    <!-- Q1 -->
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Q1
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("DataReader-Single", "Index3", "Employee")</li>
+                            <li>@Html.ActionLink("DataReader-Multiple", "Index4", "Employee")</li>
+                        </ul>
+                    </li>
+
+                    <!-- Q2 -->
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Q2
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("DataAdapter-Single", "Index1", "Employee")</li>
+                            <li>@Html.ActionLink("DataAdapter-Multiple", "Index2", "Employee")</li>
+                        </ul>
+                    </li>
+
+                    <!-- Q3 -->
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Q3
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Scalar-Value", "Index5", "Employee")</li>
+                        </ul>
+                    </li>
+
+                    <!-- Q4 -->
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Q4
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("PK-Create", "Index5", "Employee")</li>
+                            <li>@Html.ActionLink("PKFK - Create", "Index8", "Employee")</li>
+                        </ul>
+                    </li>
+
+                    <!-- Q5 -->
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Q5
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Bool-User", "Index9", "Employee")</li>
+                        </ul>
+                    </li>
+
+                    <!-- Q6 -->
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Q6
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Multipe-Insert", "Index10", "Employee")</li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Q7
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("UserDefined-Table", "Index15", "Employee")</li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Q8
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Find-User", "Index14", "Employee")</li>
+                        </ul>
+                    </li>
+
+                    <!-- Q9 -->
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Q9
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Check-Delete", "Index11", "Employee")</li>
+                        </ul>
+                    </li>
+
+                    <!-- Q10 -->
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Q10
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Update-Salary", "Index12", "Employee")</li>
+                        </ul>
+                    </li>
+
+                    <li>@Html.ActionLink("Sub-Layout", "ChildLayout", "Employee")</li>
+
                 </ul>
-                @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>

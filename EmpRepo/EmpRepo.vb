@@ -79,6 +79,7 @@ Public Class EmpRepo
     End Function
 
 
+
     Public Shared Function getEmployeeDR() As List(Of EBO)
         Dim connection As String = ConfigurationManager.ConnectionStrings("EmpContext").ConnectionString
         Dim conn As SqlConnection = New SqlConnection(connection)
@@ -150,4 +151,225 @@ Public Class EmpRepo
         l.ListEmpDetails = l2
         Return l
     End Function
+
+
+    Public Shared Function getScalarValue(emp As EBO) As Int32
+        Dim connection As String = ConfigurationManager.ConnectionStrings("EmpContext").ConnectionString
+        Dim conn As SqlConnection = New SqlConnection(connection)
+        conn.Open()
+        Dim id As Int32 = 0
+        Try
+            Dim cmd As SqlCommand = New SqlCommand()
+            cmd.Connection = conn
+            cmd.CommandType = System.Data.CommandType.StoredProcedure
+            cmd.CommandText = "spInsertEmp"
+            cmd.Parameters.AddWithValue("@Name", emp.EmpName)
+            cmd.Parameters.AddWithValue("@Age", emp.EmpAge)
+            cmd.Parameters.AddWithValue("@JoiningDate", emp.EmpJoiningDate)
+            cmd.Parameters.AddWithValue("@Salary", emp.EmpSalary)
+            Dim id1 As Object = cmd.ExecuteScalar()
+            id = Convert.ToInt32(id1)
+        Catch ex As Exception
+            Throw ex
+        Finally
+            If (conn.State = ConnectionState.Open) Then
+                conn.Close()
+            End If
+        End Try
+        Return id
+    End Function
+
+    Public Shared Function insertIntoTwoTables(emp As EmpViewModel1) As Int32
+        Dim connection As String = ConfigurationManager.ConnectionStrings("EmpContext").ConnectionString
+        Dim conn As SqlConnection = New SqlConnection(connection)
+        conn.Open()
+        Dim id As Int32 = 0
+        Try
+            Dim cmd As SqlCommand = New SqlCommand()
+            cmd.Connection = conn
+            cmd.CommandType = System.Data.CommandType.StoredProcedure
+            cmd.CommandText = "spInsertIntoTwoTables"
+            cmd.Parameters.AddWithValue("@Name", emp.EBOObj.EmpName)
+            cmd.Parameters.AddWithValue("@Age", emp.EBOObj.EmpAge)
+            cmd.Parameters.AddWithValue("@JoiningDate", emp.EBOObj.EmpJoiningDate)
+            cmd.Parameters.AddWithValue("@Salary", emp.EBOObj.EmpSalary)
+            cmd.Parameters.AddWithValue("@Phone", emp.EmpDetailsObj.EDPhone)
+            cmd.Parameters.AddWithValue("@Email", emp.EmpDetailsObj.EDEmail)
+            cmd.Parameters.AddWithValue("@Skills", emp.EmpDetailsObj.EDSalary)
+            Dim id1 As Object = cmd.ExecuteScalar()
+            id = Convert.ToInt32(id1)
+        Catch ex As Exception
+            Throw ex
+        Finally
+            If (conn.State = ConnectionState.Open) Then
+                conn.Close()
+            End If
+        End Try
+        Return id
+    End Function
+
+
+    Public Shared Function findEmployee(empName As String) As String
+        Dim connection As String = ConfigurationManager.ConnectionStrings("EmpContext").ConnectionString
+        Dim conn As SqlConnection = New SqlConnection(connection)
+        conn.Open()
+        Dim id As String = ""
+        Try
+            Dim cmd As SqlCommand = New SqlCommand()
+            cmd.Connection = conn
+            cmd.CommandType = System.Data.CommandType.StoredProcedure
+            cmd.CommandText = "spBool"
+            cmd.Parameters.AddWithValue("@Name", empName)
+            Dim id1 As Object = cmd.ExecuteScalar()
+            id = id1.ToString()
+        Catch ex As Exception
+            Throw ex
+        Finally
+            If (conn.State = ConnectionState.Open) Then
+                conn.Close()
+            End If
+        End Try
+        Return id
+    End Function
+
+    Public Shared Function checkuser(id As Int32) As String
+        Dim connection As String = ConfigurationManager.ConnectionStrings("EmpContext").ConnectionString
+        Dim conn As SqlConnection = New SqlConnection(connection)
+        conn.Open()
+        Dim output As String = ""
+        Try
+            Dim cmd As SqlCommand = New SqlCommand()
+            cmd.Connection = conn
+            cmd.CommandType = System.Data.CommandType.StoredProcedure
+            cmd.CommandText = "spDeleteEmp"
+            cmd.Parameters.AddWithValue("@id", id)
+            Dim id1 As Object = cmd.ExecuteScalar()
+            output = id1.ToString()
+        Catch ex As Exception
+            Throw ex
+        Finally
+            If (conn.State = ConnectionState.Open) Then
+                conn.Close()
+            End If
+        End Try
+        Return output
+    End Function
+
+    Public Shared Function updateSalary() As String
+        Dim connection As String = ConfigurationManager.ConnectionStrings("EmpContext").ConnectionString
+        Dim conn As SqlConnection = New SqlConnection(connection)
+        conn.Open()
+        Dim output As String = ""
+        Try
+            Dim cmd As SqlCommand = New SqlCommand()
+            cmd.Connection = conn
+            cmd.CommandType = System.Data.CommandType.StoredProcedure
+            cmd.CommandText = "spUpdateSalary"
+            cmd.ExecuteNonQuery()
+            output = "Updated"
+        Catch ex As Exception
+            Throw ex
+        Finally
+            If (conn.State = ConnectionState.Open) Then
+                conn.Close()
+            End If
+        End Try
+        Return output
+    End Function
+
+    Public Shared Function UDT(emp As EmpBO.EBO) As String
+        Dim connection As String = ConfigurationManager.ConnectionStrings("EmpContext").ConnectionString
+        Dim conn As SqlConnection = New SqlConnection(connection)
+        conn.Open()
+        Dim output As String = ""
+        Dim dt As DataTable = New DataTable()
+        dt.Columns.Add("Name", GetType(String))
+        dt.Columns.Add("Age", GetType(Int32))
+        dt.Columns.Add("JoiningDate", GetType(DateTime))
+        dt.Columns.Add("Salary", GetType(Int32))
+        Try
+            Dim dr As DataRow = dt.NewRow()
+            dr("Name") = emp.EmpName
+            dr("Age") = emp.EmpAge
+            dr("JoiningDate") = emp.EmpJoiningDate
+            dr("Salary") = emp.EmpSalary
+            dt.Rows.Add(dr)
+
+            Dim cmd As SqlCommand = New SqlCommand()
+            cmd.Connection = conn
+            cmd.CommandType = System.Data.CommandType.StoredProcedure
+            cmd.Parameters.AddWithValue("@UserDefinedTable", dt)
+            cmd.CommandText = "spCustomTable1"
+            cmd.ExecuteNonQuery()
+            output = "Created"
+        Catch ex As Exception
+            Throw ex
+        Finally
+            If (conn.State = ConnectionState.Open) Then
+                conn.Close()
+            End If
+        End Try
+        Return output
+    End Function
+
+    Public Shared Function MultipleInsert(emp As List(Of EmpBO.EBO))
+        Dim connection As String = ConfigurationManager.ConnectionStrings("EmpContext").ConnectionString
+        Dim conn As SqlConnection = New SqlConnection(connection)
+        conn.Open()
+        Try
+            For Each e In emp
+                Dim cmd As SqlCommand = New SqlCommand()
+                cmd.Connection = conn
+                cmd.CommandType = System.Data.CommandType.StoredProcedure
+                cmd.CommandText = "spInsertEmp"
+                cmd.Parameters.AddWithValue("@Name", e.EmpName)
+                cmd.Parameters.AddWithValue("@Age", e.EmpAge)
+                cmd.Parameters.AddWithValue("@JoiningDate", e.EmpJoiningDate)
+                cmd.Parameters.AddWithValue("@Salary", e.EmpSalary)
+                cmd.ExecuteNonQuery()
+            Next
+
+        Catch ex As Exception
+            Throw ex
+        Finally
+            If (conn.State = ConnectionState.Open) Then
+                conn.Close()
+            End If
+        End Try
+    End Function
+
+    Public Shared Function UserInfo(Name As String)
+        Dim connection As String = ConfigurationManager.ConnectionStrings("EmpContext").ConnectionString
+        Dim conn As SqlConnection = New SqlConnection(connection)
+        conn.Open()
+        Dim r1 As Object = New Object()
+        Try
+            Dim cmd As SqlCommand = New SqlCommand()
+            cmd.Connection = conn
+            cmd.CommandType = System.Data.CommandType.StoredProcedure
+            cmd.CommandText = "spCheckUserDetails"
+            cmd.Parameters.AddWithValue("@Name", Name)
+            Dim rd As SqlDataReader = cmd.ExecuteReader()
+            While (rd.Read())
+                If (rd.FieldCount > 1) Then
+                    Dim emp As EmpBO.EBO = New EmpBO.EBO()
+                    emp.EmpName = rd("Name").ToString()
+                    emp.EmpAge = Convert.ToInt32(rd("Age"))
+                    emp.EmpJoiningDate = Convert.ToDateTime(rd("JoiningDate"))
+                    emp.EmpSalary = Convert.ToInt32(rd("Salary"))
+                    r1 = emp
+                Else
+                    r1 = rd("Message").ToString()
+                End If
+            End While
+        Catch ex As Exception
+            Throw ex
+        Finally
+            If (conn.State = ConnectionState.Open) Then
+                conn.Close()
+            End If
+        End Try
+        Return r1
+    End Function
+
 End Class

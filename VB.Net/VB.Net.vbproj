@@ -276,6 +276,15 @@
     <Content Include="Views\Employee\Index1.vbhtml" />
     <Content Include="Views\Employee\Index2.vbhtml" />
     <Content Include="Views\Employee\Index4.vbhtml" />
+    <Content Include="Views\Employee\Index5.vbhtml" />
+    <Content Include="Views\Employee\Index6.vbhtml" />
+    <Content Include="Views\Employee\Index8.vbhtml" />
+    <Content Include="Views\Employee\Index9.vbhtml" />
+    <Content Include="Views\Employee\Index11.vbhtml" />
+    <Content Include="Views\Employee\Index12.vbhtml" />
+    <Content Include="Views\Employee\Index15.vbhtml" />
+    <Content Include="Views\Employee\Index10.vbhtml" />
+    <Content Include="Views\Employee\Index14.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
